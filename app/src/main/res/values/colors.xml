@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#1C77C3</color> // blue
+    <color name="acccent_color">#39A9DB</color> // light blue
+    <color name="background_color">#F5F5F5</color> // pale white
+    <color name="H1_color">#272D2D</color> // Dark Black Green
+    <color name="primary_light_color">#3B97E3</color> primary blue but lighter
+    <color name="primary_light_light_color">#C8E4F9</color> primary blue but even lighter
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

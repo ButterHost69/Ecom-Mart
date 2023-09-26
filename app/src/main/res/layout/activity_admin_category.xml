@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminCategoryActivity">
+
+    <LinearLayout
+        android:id="@+id/heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        android:padding="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ecom Mart"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/H1_color"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chooseProductText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/heading_layout"
+        android:text="Choose A Product"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="175dp"/>
+
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/chooseProductText"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border_design"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/industrialx32"
+                />
+            <TextView
+                android:id="@+id/constructinMaterialView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Building Construction Material &amp; Equipment"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border_design"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cpux32"
+                />
+            <TextView
+                android:id="@+id/electronicsView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Electronics &amp; Electrical Goods &amp; Supplies"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/border_design"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/machineryx32"
+                />
+            <TextView
+                android:id="@+id/machineryView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Industrial Plants, Machinery &amp; Equipment"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

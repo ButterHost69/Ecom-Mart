@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971252074550",
+    "project_id": "ecom-mart-f9094",
+    "storage_bucket": "ecom-mart-f9094.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971252074550:android:1be6d78e5e93d30e8af097",
+        "android_client_info": {
+          "package_name": "com.example.sihv2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRZfehFG2Sip59HuxCHlecFUefQoNtn4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
