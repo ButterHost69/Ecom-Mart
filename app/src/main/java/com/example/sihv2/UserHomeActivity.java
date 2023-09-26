@@ -5,15 +5,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.auth.User;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class UserHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -32,41 +37,40 @@ public class UserHomeActivity extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.user_home_home)
-                {
-                    Toast.makeText(UserHomeActivity.this, "Home Open", Toast.LENGTH_SHORT).show();
-                }
-
-                else if(item.getItemId() == R.id.user_cart_home)
-                {
-                    Toast.makeText(UserHomeActivity.this, "Cart Open", Toast.LENGTH_SHORT).show();
-                }
-
-                else if(item.getItemId() == R.id.user_order_home)
-                {
-                    Toast.makeText(UserHomeActivity.this, "Order Open", Toast.LENGTH_SHORT).show();
-                }
-
-                else if(item.getItemId() == R.id.user_categories_home)
-                {
-                    Toast.makeText(UserHomeActivity.this, "Categories Open", Toast.LENGTH_SHORT).show();
-                }
-
-                else if(item.getItemId() == R.id.user_settings_home)
-                {
-                    Toast.makeText(UserHomeActivity.this, "Settings Open", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
-                    Toast.makeText(UserHomeActivity.this, "Nothing Working", Toast.LENGTH_SHORT).show();
-                    return false;
-                }
-                return false;
-            }
-        });
     }
-}
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //FirebaseRecyclerOptions<>
+    }
+
+    @Override
+    public boolean onNavigationItemSelected (@NonNull MenuItem item)
+    {
+        int id = item.getItemId();
+
+        if (id == R.id.user_cart_home)
+        {
+
+        }
+        else if (id == R.id.user_order_home)
+        {
+
+        }
+        else if (id == R.id.user_categories_home)
+        {
+
+        } else if (id == R.id.user_settings_home)
+        {
+                //Intent intent = new Intent(UserHomeActivity.this, SettinsActivity.class);
+                //startActivity(intent);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+        }
+    }
+
