@@ -165,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
                             else if(parentDBName.equals("Users")){
                                 Toast.makeText(MainActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
-                                //Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
-                                //startActivity(intent);
+                                Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
+                                startActivity(intent);
                             }
                         }
                         else {
