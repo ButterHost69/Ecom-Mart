@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sihv2.Model.Products;
@@ -29,108 +31,105 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.auth.User;
 import com.squareup.picasso.Picasso;
 
-public class UserHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class UserHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DatabaseReference ProductsRef;
-    private RecyclerView recycler_view;
-    RecyclerView.LayoutManager layoutManager;
+    private DatabaseReference productsRef;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-
-    ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-        recycler_view = findViewById(R.id.recycler_view);
+        productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        recyclerView = findViewById(R.id.recycler_view);
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationViews);
-        navigationView.setNavigationItemSelectedListener(this);
-
         toolbar = findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open, R.string.navigation_close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        recycler_view.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        recycler_view.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        // Your code here
 
-        Toast.makeText(UserHomeActivity.this, "123 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
         FirebaseRecyclerOptions<Products> options =
-                new FirebaseRecyclerOptions.Builder<Products>().
-                        setQuery(ProductsRef, Products.class).
-                        build();
-
+                new FirebaseRecyclerOptions.Builder<Products>()
+                        .setQuery(productsRef, Products.class)
+                        .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
-                    {
-                        Toast.makeText(UserHomeActivity.this, "Test2 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-                        holder.product_name.setText(model.getPname());
-                        holder.product_description.setText(model.getDescription());
-                        holder.product_price.setText("Price: "+ model.getPrice());
-                        Toast.makeText(UserHomeActivity.this, "Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-                        //holder.product_price.setText(model.getImage());
-                        //Picasso.get().load(model.getImage()).into(holder.getImage());
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+                        holder.bind(model);
                     }
-
 
                     @NonNull
                     @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-                    {
-                        Toast.makeText(UserHomeActivity.this, "Test3 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
+                        return new ProductViewHolder(view);
                     }
                 };
 
-        recycler_view.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
 
     @Override
-    public boolean onNavigationItemSelected (@NonNull MenuItem item)
-    {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        Toast.makeText(UserHomeActivity.this, "Test4 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-        if (id == R.id.user_cart_home)
-        {
-            Toast.makeText(UserHomeActivity.this, "Test4 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-        }
-        else if (id == R.id.user_order_home)
-        {
-            Toast.makeText(UserHomeActivity.this, "Test4 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-        }
-        else if (id == R.id.user_categories_home)
-        {
-            Toast.makeText(UserHomeActivity.this, "Test4 Success We Have Come So Far", Toast.LENGTH_SHORT).show();
-        }
-        else if (id == R.id.user_settings_home)
-        {
-                //Intent intent = new Intent(UserHomeActivity.this, SettinsActivity.class);
-                //startActivity(intent);
+        if (id == R.id.user_cart_home) {
+            // Handle cart action
+        } else if (id == R.id.user_order_home) {
+            // Handle order action
+        } else if (id == R.id.user_categories_home) {
+            // Handle categories action
+        } else if (id == R.id.user_settings_home) {
+            // Handle settings action
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
-        drawer.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // ViewHolder for the RecyclerView
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+        private TextView productName;
+        private TextView productDescription;
+        private TextView productPrice;
+        private ImageView productImage;
+
+        public ProductViewHolder(@NonNull View itemView) {
+            super(itemView);
+            productName = itemView.findViewById(R.id.product_name);
+            productDescription = itemView.findViewById(R.id.product_description);
+            productPrice = itemView.findViewById(R.id.product_price);
+            productImage = itemView.findViewById(R.id.product_image);
+        }
+
+        public void bind(Products product) {
+            Log.d("UserHomeActivity", "Working??");
+            productName.setText(product.getPname());
+            productDescription.setText(product.getDescription());
+            productPrice.setText("Price: " + product.getPrice());
+            Picasso.get().load(product.getImage()).into(productImage);
         }
     }
+}
 
