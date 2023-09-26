@@ -95,7 +95,7 @@ public class UserHomeActivity extends AppCompatActivity implements NavigationVie
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.user_cart_home) {
-            // Handle cart action
+            Log.d("UserHomeActivity", "Cart??");
         } else if (id == R.id.user_order_home) {
             // Handle order action
         } else if (id == R.id.user_categories_home) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SIHV2</string>
+    <string name="app_name"></string>
     <string name="navigation_open">Open Navigation Drawer</string>
     <string name="navigation_close">Close Navigation Drawer</string>
 </resources>
