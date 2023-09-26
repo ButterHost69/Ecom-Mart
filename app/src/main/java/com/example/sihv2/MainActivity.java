@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         ifSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginButton.setText("Login Admin");
+                loginButton.setText("Login As Seller");
                 ifSeller.setVisibility(View.INVISIBLE);
                 ifBuyer.setVisibility(View.VISIBLE);
                 parentDBName = "Admins";

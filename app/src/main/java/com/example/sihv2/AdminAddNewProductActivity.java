@@ -121,8 +121,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void StoreProductInformation()
     {
-        loadingBar.setTitle("Signing In");
-        loadingBar.setMessage("Checking Your Credentials");
+        loadingBar.setTitle("Adding Your Product");
+        loadingBar.setMessage("Please Wait Adding Your Prodcut");
         loadingBar.setCanceledOnTouchOutside(false);
 
         loadingBar.show();

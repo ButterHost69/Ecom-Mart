@@ -40,14 +40,7 @@
                 android:layout_marginRight="90dp"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ecom Mart"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@color/H1_color"
-                />
+
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
