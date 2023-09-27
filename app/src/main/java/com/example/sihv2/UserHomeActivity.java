@@ -77,6 +77,16 @@ public class UserHomeActivity extends AppCompatActivity implements NavigationVie
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                         holder.bind(model);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(UserHomeActivity.this, ProductDetailsActivity.class);
+                                //startActivity(intent);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull
